@@ -193,11 +193,13 @@
     </table>
     <p>E/S: <span id="wrValue"></span></p>
 
-    <form action="#">
+    <form>
         <label for="inputText">Mensaje:</label>
-        <input type="text" name="" id="inputText" placeholder="Escriba un mensaje corto aquí">
-        <button onclick="enviarAction()">Enviar</button>
+        <input type="text" name="" id="inputText" placeholder="Escriba un mensaje corto aquí"><br>
+        <label for="velocidadRAM">Velocidad: </label>
+        <input type="range" min="0" max="100" step="1" name="" id="velocidadRAM"><br>
     </form>
+    <button onclick="enviarAction()">Enviar</button>
     <script>
         flushRAM();
     </script>

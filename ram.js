@@ -1,5 +1,6 @@
 var writeMode = false;
 var ramSize;
+var velocidadMS;
 
 function setWriteMode(isWriting) {
   writeMode = isWriting;
@@ -13,6 +14,7 @@ function setWriteMode(isWriting) {
 
 function flushRAM() {
   setTable("data");
+  setWriteMode(true);
   var dims = getDimensions(true);
   for (let i = 1; i < dims[0]; i++) {
     for (let j = 0; j < dims[1]; j++) {
@@ -20,7 +22,12 @@ function flushRAM() {
     }
   }
   ramSize = dims[0];
-  setWriteMode(false);
+  setWriteMode(true);
+}
+
+function setRAMSpeed() {
+    rangeVal = document.getElementById("velocidadRAM").valueAsNumber;
+    velocidadMS = (rangeVal * -20) + 2000;
 }
 
 function writeToRAM(data) {
@@ -32,13 +39,26 @@ function writeToRAM(data) {
     }
     let asciiData = toASCIIValues(data);
     let k = 0;
-    for (let i = 1; k < dataSize; i++) {
-      let bin = to8Bit(asciiData[k]);
-      for (let j = 0; j < bin.length; j++) {
-        writeTo(i, j, bin[j]);
-      }
-      k++;
-    }
+    let i = 1;
+    let id = setInterval(function() {
+        if(k >= dataSize) {
+            setWriteMode(false);
+            clearInterval(id);
+        }
+        else {
+            let bin = to8Bit(asciiData[k]);
+            setWriteMode(true);
+            for (let j = 0; j < bin.length; j++) {
+                setTable("io");
+                writeTo(0, j, bin[j]);
+                setTable("data");
+                
+                writeTo(i, j, bin[j]);
+            }
+            k++;
+            i++;
+        }
+    }, velocidadMS);
   }
   else {
       console.error("RAM is in read mode");
