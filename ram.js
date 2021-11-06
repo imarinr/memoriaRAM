@@ -50,7 +50,7 @@ function writeToRAM(data) {
             setWriteMode(true);
             for (let j = 0; j < bin.length; j++) {
                 setTable("io");
-                writeTo(0, j, bin[j]);
+                writeTo(0, j + 1, bin[j]);
                 setTable("data");
                 
                 writeTo(i, j, bin[j]);
