@@ -11,198 +11,217 @@
     <script src="tables.js"></script>
     <script src="ram.js"></script>
     <script src="uiActions.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <table id="dir">
-        <thead>
-            <tr>
-                <th>Dirección</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>7</td>
-            </tr>
-        </tbody>
-    </table>
-    <table id="data">
-        <thead>
-            <tr>
-                <th colspan="8">Datos</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    <table id="dec">
-        <thead>
-            <tr>
-                <th>Decimal</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    <table id="io">
-        <thead>
-            <tr>
-                <td>I/O</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </thead>
-    </table>
-    <table id="decIO">
-        <thead>
-            <tr>
-                <td></td>
-            </tr>
-        </thead>
-    </table>
-    <p>E/S: <span id="wrValue"></span></p>
+    <div class="bg-image"></div>
+    <div class="fg-content">
+        <h1>Simulador de memoria RAM</h1>
+        <button id="btn_help" onclick="switchHelp()"><img src="img/help_icon.png" alt="ayuda" height="32" width="32"></button>
+        <p id="ayuda">
+            Este sitio se encarga de emular una memoria RAM simple, de 8 bytes de capacidad. <br>
+            Escribe algo en la caja de texto de abajo, presiona enviar y verás como va mosidficándose la memoria. <br>
+            También puedes modificar la velocidad de la animación con el slider que aparece en la sección inferior.
+        </p>
+        <div id="allTables">
+            <table id="dir">
+                <thead>
+                    <tr>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="data">
+                <thead>
+                    <tr>
+                        <th colspan="8">Datos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="dec">
+                <thead>
+                    <tr>
+                        <th>Decimal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <table id="io">
+                    <thead>
+                        <tr>
+                            <td>I/O</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="decIO">
+                    <thead>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
-    <form>
-        <label for="inputText">Mensaje:</label>
-        <input type="text" name="" id="inputText" placeholder="Escriba un mensaje corto aquí"><br>
-        <label for="velocidadRAM">Velocidad: </label>
-        <input type="range" min="0" max="100" step="1" name="" id="velocidadRAM"><br>
-    </form>
-    <button onclick="enviarAction()">Enviar</button>
+        </div>
+
+        <p>E/S: <span id="wrValue"></span></p>
+
+        <form>
+            <label for="inputText">Mensaje:</label>
+            <input type="text" name="" id="inputText" placeholder="Escriba un mensaje corto aquí"><br>
+            <label for="velocidadRAM">Velocidad: </label>
+            <input type="range" min="0" max="100" step="5" name="" id="velocidadRAM"><br>
+        </form>
+        <button onclick="enviarAction()" id="btn_send">Enviar</button>
+    </div>
+
     <script>
         flushRAM();
+        let p = document.getElementById("ayuda");
+        p.style.display = "none";
     </script>
 </body>
-
 </html>
