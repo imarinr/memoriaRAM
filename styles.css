@@ -67,7 +67,9 @@ table {
 #dir td,
 #dir th,
 #io td,
-#io th {
+#io th,
+#dec td,
+#dec th {
   padding: 15px;
   border-bottom: 1px solid white;
 }

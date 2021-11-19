@@ -4,7 +4,7 @@ var velocidadMS;
 
 function setWriteMode(isWriting) {
   writeMode = isWriting;
-  if (isWriting) {
+  if (writeMode) {
     document.getElementById("wrValue").innerHTML = "Escritura";
   }
   else {
@@ -22,7 +22,16 @@ function flushRAM() {
     }
   }
   ramSize = dims[0];
-  setWriteMode(true);
+
+  // actualizar la lista de decimales
+  setTable("dec");
+  dims = getDimensions(true);
+  for (let i = 1; i < dims[0]; i++) {
+    for (let j = 0; j < dims[1]; j++) {
+      writeTo(i, j, 0);
+    }
+  }
+  setWriteMode(false);
 }
 
 function setRAMSpeed() {
@@ -52,9 +61,10 @@ function writeToRAM(data) {
                 setTable("io");
                 writeTo(0, j + 1, bin[j]);
                 setTable("data");
-                
                 writeTo(i, j, bin[j]);
             }
+            setTable("dec");
+            writeTo(i, 0, asciiData[k]);
             k++;
             i++;
         }
